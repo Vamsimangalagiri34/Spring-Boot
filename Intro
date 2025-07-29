@@ -1,0 +1,70 @@
+we can spring boot application using cmd : mvn spring-boot:run
+
+Spring Boot gives Auto Configuration
+Spring Boot stater will all take care of this
+like embedded server (tomcat) it helps us to add tomcat server by defaultly when we deploying so we need not to add server externally 
+supports cli(command line interface)
+Actuator "-by this we can find how our application is healthy
+
+we choose spring boot to develope production level application 
+spring framework it allows developer to configure lot of configurations
+
+
+==================================
+Software Setup for SpringBoot
+==================================
+
+JDK
+Spring Tool Suite
+DB
+PostMan or we can also do in any ide like eclispe by using plugins  or
+
+go to  spring inititliser.io website and download open it in any ide and extract it 
+Or
+if you want to open spring tool suit you can open like choose workplace and extract the folder than double clik it extract contents.zip folder there you have sts-version open it there you have  SpringToolSuite4.exe 
+
+===================================
+RequestParam 
+===================================
+RequestParam is used to get values from the url 
+
+http://localhost:8086/add?num1=1&num2=33 
+we can get paramters by using 
+
+public String add(@RequestParam("num1") int n1 ,int num2)
+
+if we want change the parmater name we have to do like this @RequestParam("num1") else we can call by name
+
+or
+
+public String add(HttpsRequest request){
+    int num1=Integer.parseInt(request.getParameter("num1))
+    in this it give values default like by string we have to convert it into integer
+    
+    likewise
+}
+
+=======================================
+@Autowired
+=======================================
+@Autowired(required=false)
+it helps to main avoid exception likeNoSuchBeanDefinitionException.
+
+Even if the class is present in the code,
+
+But if it doesn't have an annotation like @Service, @Component, or @Controller,
+
+Then Spring won’t treat it as a bean, so it won’t create an object of it during startup.
+
+
+@Autowired
+private MyService myService;
+
+
+
+Spring will say:
+
+❌ "You asked me to inject MyService, but I didn’t create any bean for it! I can’t proceed!"
+Result: ❌ App crashes with a NoSuchBeanDefinitionException.
+
+if we define a class with annotations like @Component @Service it will helps to auto detect the spring bean 

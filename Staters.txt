@@ -1,0 +1,60 @@
+ Spring Boot, starters are a set of convenient dependency descriptors you can include in your application to quickly set up commonly used libraries and configurations. They help reduce boilerplate and simplify dependency management.
+
+ ✅ Common Spring Boot Starters:
+🔥 spring-boot-starter
+Basic starter that includes core Spring Boot dependencies.
+
+core dependencies in Spring Boot, we mean modules that help with:
+
+🧠 Bean Identification & Dependency Injection
+Spring identifies components (beans) using annotations like @Component, @Service, @Repository, etc., and automatically wires them where needed using @Autowired.
+
+🔄 Lifecycle Management
+Spring manages the entire lifecycle of a bean—from creation to destruction. You can hook into this lifecycle using annotations like @PostConstruct and @PreDestroy.
+
+🧰 Utility Support
+It includes various utility classes for reflection, collections, string handling, resource loading, and more, simplifying Java development.
+
+⚙️ Auto-Configuration
+Spring Boot configures your application automatically based on the libraries you’ve added. For example, if you add Spring Web, it auto-configures an embedded Tomcat server.
+
+These features are part of the foundation layer of Spring, bundled with spring-boot-starter, so you don’t have to configure them manually. It’s what makes Spring Boot development fast and hassle-free. ⚡
+
+
+🌱 spring-boot-starter-parent – What It Does:
+🧩 Manages Versions Consistently
+It provides a central place for version control of all dependencies. You don’t need to declare versions for most Spring Boot dependencies—
+
+
+1	spring-boot-starter	It is used for core starter, including auto-configuration support, logging, and YAML.
+2	spring-boot-starter-parent	It provides default configurations for the application. Once you include this in your POM.xml, you don't need to specify the version number of an artifact
+
+📦 Default Java Version
+It sets the default Java version (like Java 17) unless overridden.
+
+
+🌐 spring-boot-starter-web
+Builds web, RESTful applications using Spring MVC and embedded Tomcat.
+
+📦 spring-boot-starter-data-jpa
+Used for Spring Data JPA with Hibernate; enables database operations.
+
+🔐 spring-boot-starter-security
+Adds Spring Security for authentication and authorization.
+
+💬 spring-boot-starter-validation
+Provides bean validation support using Hibernate Validator.
+
+📊 spring-boot-starter-actuator
+Gives production-ready features like monitoring, metrics, and health checks.
+
+📄 spring-boot-starter-thymeleaf
+Supports Thymeleaf templating engine for web views.
+
+🔁 spring-boot-starter-aop
+Supports aspect-oriented programming (AOP) using Spring AOP and AspectJ.
+
+🐞 spring-boot-starter-test
+Includes testing libraries like JUnit, Mockito, and Spring Test.
+
+These starters make it easier to build powerful Spring applications without worrying about individual dependencies and versions.
