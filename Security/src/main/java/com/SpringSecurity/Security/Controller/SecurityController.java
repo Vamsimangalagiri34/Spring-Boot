@@ -5,18 +5,21 @@ import com.SpringSecurity.Security.Service.StudentService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.csrf.CsrfToken;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/securityex")
 public class SecurityController {
 
     @Autowired
     StudentService sService;
+
+    @GetMapping
+    public String greeting(){
+        return "Good Evening !";
+    }
     @GetMapping("/home")
     public String home(HttpServletRequest request){
         return "greetings !"+request.getSession().getId();
@@ -40,6 +43,7 @@ public class SecurityController {
 
     @GetMapping("/csrf")
     public CsrfToken getCsrf( HttpServletRequest req){
+        System.out.println((CsrfToken)  req.getAttribute("_csrf"));
         return (CsrfToken)  req.getAttribute("_csrf");
     }
 }

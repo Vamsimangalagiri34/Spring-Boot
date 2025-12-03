@@ -1,0 +1,49 @@
+server.port=8081
+management.endpoints.web.exposure.include=*
+
+✅ Base URL for Actuator
+http://localhost:8081/actuator
+
+
+This endpoint shows a full list of all available actuator endpoints.
+
+✅ Examples of important actuator endpoints
+
+You can open these directly:
+
+🌿 Health
+http://localhost:8081/actuator/health
+Shows application health (UP/DOWN), DB connection status, disk space, etc.
+
+
+ℹ️ Info
+http://localhost:8081/actuator/info
+Displays custom application details you add inside application.properties
+
+📊 Metrics
+http://localhost:8081/actuator/metrics
+Spring Boot returns a list of all available metric names.
+Shows JVM memory, CPU usage, thread counts, HTTP request stats, etc.
+
+disk.free → How much disk is free
+👉 http://localhost:8081/actuator/metrics/disk.free
+
+disk.total → Total disk space
+👉 http://localhost:8081/actuator/metrics/disk.total
+
+
+📂 Environment
+http://localhost:8081/actuator/env
+
+🛠 Beans
+http://localhost:8081/actuator/beans
+
+📌 Mappings
+http://localhost:8081/actuator/mappings
+
+🔎 Loggers
+http://localhost:8081/actuator/loggers
+
+📝 Config Props
+http://localhost:8081/actuator/configprops
+
