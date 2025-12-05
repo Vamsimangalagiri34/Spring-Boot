@@ -1,9 +1,11 @@
 package com.SpringSecurity.Security.Controller;
 
 import com.SpringSecurity.Security.Model.Student;
+import com.SpringSecurity.Security.Model.User;
 import com.SpringSecurity.Security.Service.StudentService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,9 +32,12 @@ public class SecurityController {
         return "about page";
     }
 
-    @PostMapping("/create")
-    public  String addStudent(@RequestBody Student std){
-        return sService.addStudent((std));
+    @PostMapping("/register")
+    public  User addStudent(@RequestBody User user){
+        BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder(12);
+          user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+          System.out.println(user.getPassword());
+        return sService.addUser(user);
 
     }
 
@@ -46,4 +51,6 @@ public class SecurityController {
         System.out.println((CsrfToken)  req.getAttribute("_csrf"));
         return (CsrfToken)  req.getAttribute("_csrf");
     }
+
+
 }

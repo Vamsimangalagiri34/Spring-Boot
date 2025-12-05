@@ -1,14 +1,20 @@
 package com.SpringSecurity.Security.Service;
 
 import com.SpringSecurity.Security.Model.Student;
+import com.SpringSecurity.Security.Model.User;
+import com.SpringSecurity.Security.Repository.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.*;
 import java.util.List;
 
 @Service
 public class StudentService {
+
+
+    @Autowired
+    UserRepo userRepo;
 
     List<Student> stud = new ArrayList<Student>(List.of(
             new Student(1, "Vamsi", "INDIA"),
@@ -30,6 +36,10 @@ public class StudentService {
     public String addStudent(Student stu){
         stud.add(stu);
         return "201";
+    }
+
+    public User addUser(User user){
+        return userRepo.save(user);
     }
 
 }
