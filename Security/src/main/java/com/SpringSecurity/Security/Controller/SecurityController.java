@@ -1,10 +1,14 @@
 package com.SpringSecurity.Security.Controller;
 
+import com.SpringSecurity.Security.JWTWorld.JWTService;
 import com.SpringSecurity.Security.Model.Student;
 import com.SpringSecurity.Security.Model.User;
 import com.SpringSecurity.Security.Service.StudentService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +22,11 @@ public class SecurityController {
     @Autowired
     StudentService sService;
 
+    @Autowired
+    JWTService jwtService;
+
+    @Autowired
+    AuthenticationManager authenticationManager;
     @GetMapping
     public String greeting(){
         return "Good Evening !";
@@ -52,5 +61,15 @@ public class SecurityController {
         return (CsrfToken)  req.getAttribute("_csrf");
     }
 
+    @PostMapping("/login")
+    public String login(@RequestBody User user){
+        Authentication authentication=authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(user.getName(),user.getPassword()));
+        if(authentication.isAuthenticated()){
+            return jwtService.generateToken(user.getName());
+        }
+
+        return "failed";
+    }
 
 }
