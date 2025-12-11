@@ -13,14 +13,24 @@ public class User {
     @Column(name = "username")
     String name;
     String password;
+    String role;
 
     public User() {
     }
 
-    public User(int id, String name, String password) {
+    public User(int id, String name, String password, String role) {
         this.id = id;
         this.name = name;
         this.password = password;
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getId() {
